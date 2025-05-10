@@ -5,9 +5,13 @@ import ResultPage from './pages/ResultPage';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
-    // Check the saved theme in localStorage on initial load
+    // Default to dark mode if no theme is saved in localStorage
     const savedTheme = localStorage.getItem('theme');
-    return savedTheme ? savedTheme === 'dark' : false; // Default to light mode if no saved theme
+    if (savedTheme) {
+      return savedTheme === 'dark';
+    } else {
+      return true; // Default to dark mode
+    }
   });
 
   useEffect(() => {
@@ -25,6 +29,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage darkMode={darkMode} toggleTheme={toggleTheme} />} />
         <Route path="/results" element={<ResultPage darkMode={darkMode} />} />
+        
       </Routes>
     </BrowserRouter>
   );

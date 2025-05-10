@@ -8,6 +8,8 @@ const HomePage = ({ darkMode, toggleTheme }) => {
   const [showResults, setShowResults] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const goHome = () => window.location.reload();
+
 
   // Handle dark/light mode toggle
   useEffect(() => {
@@ -34,12 +36,17 @@ const HomePage = ({ darkMode, toggleTheme }) => {
   };
 
   const handleSearch = (e) => {
-    e.preventDefault();
-    if (query.trim() !== '') {
-      // Navigate to ResultPage with query in state
+  e.preventDefault();
+  if (query.trim() !== '') {
+    setLoading(true); // Show loading spinner
+
+    setTimeout(() => {
       navigate('/results', { state: { query } });
-    }
-  };
+      setLoading(false); // Optionally hide it after navigation
+    }, 2000); // Simulate loading delay (1s)
+  }
+};
+
 
   
 
@@ -47,7 +54,7 @@ const HomePage = ({ darkMode, toggleTheme }) => {
     <div className={`homepage ${darkMode ? 'dark' : 'light'}`}>
       {/* Header Section */}
       <header className="header-section">
-        <div className="brand-title">
+        <div className="brand-title" onClick={goHome} style={{ cursor: 'pointer' }}>
           <span className="med">Med</span><span className="browse">Browse</span>
         </div>
         <div className="hero-text">
@@ -126,7 +133,7 @@ const HomePage = ({ darkMode, toggleTheme }) => {
         {loading && (
           <div className="loading-screen">
             <div className="spinner-medical"></div>
-            <p>Scanning medical literature...</p>
+            {/* <p>Scanning medical literature...</p> */}
           </div>
         )}
 
@@ -159,15 +166,18 @@ const HomePage = ({ darkMode, toggleTheme }) => {
         </div>
 
         {/* About & Contact Section */}
-        <div className="about-contact-section">
+        <div className="ab">
+          <div className="about-section">
           <div className="about-us">
             <h2>About MedBrowse</h2>
             <p>
               A professional platform designed to provide easy access to medical research and publications for healthcare professionals and researchers.
             </p>
+          </div>  
+        </div>
           </div>
 
-          <div className="contact-box">
+        <div className="contact-box">
             <div className="contact-icons">
               <a href="https://github.com/yourprofile" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                 <i className="fab fa-github"></i>
@@ -180,7 +190,6 @@ const HomePage = ({ darkMode, toggleTheme }) => {
               </a>
             </div>
           </div>
-        </div>
       </section>
     </div>
   );
