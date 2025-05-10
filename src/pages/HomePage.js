@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './../styles/HomePage.css';
 import { FaBookMedical, FaSearch, FaGlobeAmericas } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
-const HomePage = () => {
+const HomePage = ({ darkMode, toggleTheme }) => {
   const [query, setQuery] = useState('');
   const [showResults, setShowResults] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const navigate = useNavigate();
 
+  // Handle dark/light mode toggle
   useEffect(() => {
     const body = document.body;
     if (darkMode) {
@@ -31,9 +33,15 @@ const HomePage = () => {
     }
   };
 
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
+  const handleSearch = (e) => {
+    e.preventDefault();
+    if (query.trim() !== '') {
+      // Navigate to ResultPage with query in state
+      navigate('/results', { state: { query } });
+    }
   };
+
+  
 
   return (
     <div className={`homepage ${darkMode ? 'dark' : 'light'}`}>
@@ -58,8 +66,7 @@ const HomePage = () => {
               id="check-5"
               type="checkbox"
               checked={darkMode}
-              onChange={toggleDarkMode}
-            />
+              onChange={toggleTheme}            />
             <label htmlFor="check-5"></label>
           </div>
         </div>
@@ -67,12 +74,12 @@ const HomePage = () => {
 
       {/* Main Search Section */}
       <main>
-        <form onSubmit={handleSubmit} className="search-wrapper">
+        <form onSubmit={handleSearch} className="search-wrapper">
           <div className="searchBox">
             <input
               className="searchInput"
               type="text"
-              placeholder="Search for articles, topics or keywords..."
+              placeholder="Search for articles, topics, or keywords..."
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />

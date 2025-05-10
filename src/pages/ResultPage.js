@@ -1,24 +1,35 @@
-// src/pages/ResultPage.js
+// ResultPage.js
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import './../styles/HomePage.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+import './../styles/ResultPage.css';
 
-const ResultPage = () => {
+const ResultPage = ({ darkMode }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const query = location.state?.query || '';
 
+  const handleBack = () => navigate('/');
+  const goHome = () => navigate('/');
+
   return (
-    <div className="homepage">
+    <div className={`homepage ${darkMode ? 'dark-mode' : 'light-mode'}`}>
       <header className="header-section">
-        <div className="brand-title">
-          <span className="med">Med</span><span className="browse">Browse</span>
+        <div className="header-wrapper">
+          <div className="brand-title" onClick={goHome} style={{ cursor: 'pointer' }}>
+            <span className="med">Med</span><span className="browse">Browse</span>
+          </div>
+          <button className="back-button" onClick={handleBack}>
+            🔙 Back to Home
+          </button>
         </div>
       </header>
+
+
+
 
       <main className="search-results">
         <h2>Results for: <span className="highlight">{query}</span></h2>
         <div className="result-card">
-          {/* You can render real results here */}
           <p>This is where search results for "<strong>{query}</strong>" will appear.</p>
         </div>
       </main>

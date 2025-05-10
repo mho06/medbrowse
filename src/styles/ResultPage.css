@@ -1,0 +1,61 @@
+/* Reuse Homepage Styles */
+@import url('./HomePage.css'); /* If using separate CSS files */
+
+/* Ensure main container adapts to theme */
+.result-page {
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: inherit;
+  color: inherit;
+}
+
+.back-button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1rem;
+    color: #ffffff;
+    background: linear-gradient(90deg, #2AF598 0%, #009EFD 100%);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+.back-button:hover {
+  transform: translateY(-3px);
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 16px;
+}
+
+body.dark-mode .back-button {
+  color: #ffffff;
+}
+
+body.dark-mode {
+    background-color: #0f172a;
+    color: #ffffff;
+  }
+  
+  body.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+  }
+  
+  .header-content {
+    display: flex;
+    flex-direction: column !important; /* Ensure vertical stacking */
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .back-button-wrapper {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .back-button {
+    display: inline-block;
+  }
+  

@@ -78,7 +78,7 @@ header p {
 
 .searchBox {
   display: flex;
-  max-width: 500px;
+  max-width: 50%;
   width: 100%;
   align-items: center;
   justify-content: space-between;
@@ -422,3 +422,6 @@ body.dark-mode {
   --card-bg: #1e293b;
   --primary-icon-color: #38bdf8;
 }
+
+
+
