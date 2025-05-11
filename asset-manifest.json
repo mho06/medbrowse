@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/medbrowse/static/css/main.1033f80b.css",
-    "main.js": "/medbrowse/static/js/main.e00b88ad.js",
+    "main.js": "/medbrowse/static/js/main.718451f2.js",
     "static/js/453.6f31c4d3.chunk.js": "/medbrowse/static/js/453.6f31c4d3.chunk.js",
     "index.html": "/medbrowse/index.html",
     "main.1033f80b.css.map": "/medbrowse/static/css/main.1033f80b.css.map",
-    "main.e00b88ad.js.map": "/medbrowse/static/js/main.e00b88ad.js.map",
+    "main.718451f2.js.map": "/medbrowse/static/js/main.718451f2.js.map",
     "453.6f31c4d3.chunk.js.map": "/medbrowse/static/js/453.6f31c4d3.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1033f80b.css",
-    "static/js/main.e00b88ad.js"
+    "static/js/main.718451f2.js"
   ]
 }
